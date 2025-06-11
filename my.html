@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pencil Art - Purchase</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            body {
+                background-image:url("img1.jpg");
+            }
+            .form-container {
+                max-width: 500px;
+                margin: 50px auto;
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            }
+            .registerbtn {
+                width: 45%;
+                padding: 12px;
+                background-color: rgb(4, 148, 4);
+                color: #ffffff;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+            }
+            .registerbtn:hover {
+                background-color: rgb(3, 120, 3);
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="text-center text-white py-3" style="background-color:#2C3E50;">
+            <a href="home.html" class="text-white text-decoration-none">&#127969; THE GALLERY VAULT</a>
+        </h1>
+        
+        <div class="form-container">
+            <h2 class="text-center mb-4"><b>PURCHASE</b></h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label"><b>Name</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Your Name" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"><b>Email</b></label>
+                    <input type="email" class="form-control" placeholder="Enter Your Email" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><b>Password</b></label>
+                    <input type="password" class="form-control" placeholder="Enter Your Password" id="age" required>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label"><b>Age</b></label>
+                    <input type="number" class="form-control" placeholder="Enter Your Age" id="age" required>
+                </div>
+                
+                <b>Gender</b>
+                <div class="mb-3">
+                    <input type="radio" name="gender" id="Female" value="female">
+                    <label for="Female">Female</label><br>
+                    
+                    <input type="radio" name="gender" id="Male" value="male">
+                    <label for="Male">Male</label>
+                </div>
+                <b>Purchase</b>
+                <div class="mb-3">
+                    <input type="Checkbox" name="gender" id="Female" value="female">
+                    <label for="Female">Digital & Graphic Art</label><br>
+                    
+                    <input type="checkbox" name="gender" id="Male" value="male">
+                    <label for="Male">Abstract & Conceptual Art</label><br>
+                    
+                    <input type="checkbox" name="gender" id="Male" value="male">
+                    <label for="Male">Traditional Paintings & Sketches</label><br>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label"><b>Date</b></label>
+                    <input type="date" class="form-control" placeholder="Enter Your Date" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phonenumber" class="form-label"><b>Phone Number</b></label>
+                    <input type="tel" class="form-control" placeholder="Enter Your Number" id="phonenumber" >
+                </div>
+                <div class="mb-3">
+                    <b>Address</b><br>
+                    <textarea name="message rows="20" cols="40">Enter Address</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <b>Upload Id Proof</b><br>
+                        <input type="file" id="myfile" name="myfile" ><br>
+                        </div><br>
+                <button type="button" onclick="validate()" class="registerbtn">Register</button>
+                <button type="submit" class="registerbtn">Reset</button><br><br>
+            </form>
+        </div>
+        <script>
+            function validate(){
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value.trim();
+                let password = document.getElementById("password").value;
+                let age = document.getElementById("age").value;
+                let gender = document.querySelector('input[name="gender"]:checked');
+                let purchase = document.querySelectorAll('input[name="purchase"]:checked');
+                let date = document.getElementById("date").value;
+                let phone = document.getElementById("phonenumber").value.trim();
+                let address = document.getElementById("address").value.trim();
+                let file = document.getElementById("myfile").value;
+
+                if (name === "") {
+                    alert("Please enter your name.");
+                    return false;
+                }
+
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                if (password === "") {
+                    alert("Please enter your password.");
+                    return false;
+                }
+
+                if (age === "" || age < 18 || age > 100) {
+                    alert("Age must be between 18 and 100.");
+                    return false;
+                }
+
+                if (!gender) {
+                    alert("Please select your gender.");
+                    return false;
+                }
+
+                if (purchase.length === 0) {
+                    alert("Please select at least one purchase option.");
+                    return false;
+                }
+
+                if (date === "") {
+                    alert("Please select a date.");
+                    return false;
+                }
+
+                let phonePattern = /^[0-9]{10}$/;
+                if (!phonePattern.test(phone)) {
+                    alert("Please enter a valid 10-digit phone number.");
+                    return false;
+                }
+
+                if (address === "") {
+                    alert("Please enter your address.");
+                    return false;
+                }
+
+                if (file === "") {
+                    alert("Please upload your ID proof.");
+                    return false;
+                }
+
+                alert("Form submitted successfully!");
+                return true;
+            }
+                }
+        </script>
+        <footer class="text-center text-white py-3 mt-4" style="background-color:#2C3E50;">
+            <ul class="list-unstyled mb-0">
+                <li>Address: 123 Art Lane, Creativity City, IN 560001</li>
+                <li>Phone: +91-422-4323999 | +91-95665 95665 | +91-82201 88844</li>
+                <li>Email: contact@thegalleryvault.com</li>
+                <li>Facebook: The Gallery Vault</li>
+                <li>"2025 The Gallery Vault. All Rights Reserved."</li>
+            </ul>
+        </footer>
+    </body>
+</html>
